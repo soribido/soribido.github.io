@@ -1,10 +1,10 @@
 ---
 layout: single
-title:  "VSCode 단축키 정리"
+title:  "Custom Dataloader for Tensorflow"
 categories: 
-    - etc
+    - deep learning
 tag:
-    - vscode    
+    - [tensorflow, keras, dataloader, memory]    
 author_profile: false
 sidebar:
     nav: "docs"
