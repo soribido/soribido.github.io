@@ -4,7 +4,7 @@ title:  "지식 증류(Knowledge Distillation)"
 categories: 
     - deep learning
 tag:
-    - [knowledge distillation]
+    - [review, knowledge distillation]
 author_profile: false
 sidebar:
     nav: "docs"
@@ -145,9 +145,9 @@ class Distiller(keras.Model):
 
 지식 증류는 손실함수가 존재하여 T의 지식을 S에 전수하는 과정이다.
 T의 soft prediction과 S의 soft prediction의 차이를 ``distillation loss``로 표현하고 여기에 S의 손실함수가 추가적으로 더해진다.(두 개의 비율은 가중치 $\alpha$ 를 통해 조절)  
-분류 문제로 가정하면 cross entropy가 S의 손실함수로 적용되고, 일반적으로 distillation loss는 KL divergence(KLD, 두 확률분포의 차이)를 사용한다.
-여기에서 scale을 위해 T의 제곱을 곱해주는데, T를 이용하여 soft label로 만들면 근사적으로 T의 제곱에 반비례하기 때문에 다시 T의 제곱을 곱해주는 것이다.
-이에 대한 증명은 논문에 나와있는데, softmax를 활성함수로 사용했을 때 cross entropy의 미분을 이용하여 근사적으로 T의 제곱에 반비례함을 보여주고 있다.
+분류 문제로 가정하면 cross entropy가 S의 손실함수로 적용되고, 일반적으로 distillation loss는 KL divergence(KLD, 두 확률분포의 차이)를 사용한다.  
+여기에서 scale을 위해 T의 제곱을 곱해주는데, T를 이용하여 soft label로 만들면 근사적으로 T의 제곱에 반비례하기 때문에 다시 T의 제곱을 곱해주는 것이다.  
+이에 대한 증명은 논문에 나와있는데, softmax를 활성함수로 사용했을 때 cross entropy의 미분을 이용하여 근사적으로 T의 제곱에 반비례함을 보여주고 있다.  
 실제로 KLD $p(x)\textrm{log}\frac{p(x)}{q(x)}$ 를 구현하여 실험하여도 근사적으로 제곱에 T의 제곱에 반비례함을 확인할 수 있다.(로그의 밑과 관계없이)    
 
 결론적으로 지식 증류는 모델의 어떠한 지식(knowledge)을 남길(distillation) 것인가이기 때문에 teacher모델에 비해서는 성능이 떨어질 수밖에 없고, 지식을 추출하는 과정, 지식을 전수하는 과정, 어떠한 task에 적용할 것인가 등등의 관점에서 여러 가지 연구가 이루어지고 있다.
