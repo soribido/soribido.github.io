@@ -2,6 +2,9 @@
 title: "blog"
 layout: archive
 permalink: /blog/
+sidebar:
+    nav: "docs"
+sidebar_main: true    
 ---
 
 

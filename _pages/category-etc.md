@@ -3,7 +3,8 @@ title: "etc"
 layout: archive
 permalink: /etc/
 sidebar:
-    nav: "sidebar-category"
+    nav: "docs"
+sidebar_main: true
 ---
 
 

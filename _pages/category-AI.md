@@ -3,7 +3,8 @@ title: "AI"
 layout: archive
 permalink: /AI/
 sidebar:
-    nav: "sidebar-category"
+    nav: "docs"
+sidebar_main: true    
 ---
 
 
