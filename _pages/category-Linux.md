@@ -1,9 +1,9 @@
 ---
 title: "Linux"
 layout: archive
-permalink: /Linux
+permalink: /linux/
 ---
 
 
-{% assign posts = site.categories.Linux %}
+{% assign posts = site.categories.linux %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
