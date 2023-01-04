@@ -2,9 +2,9 @@
 layout: single
 title:  "지식 증류(Knowledge Distillation)"
 categories: 
-    - deep learning
+    - AI
 tag:
-    - [review, knowledge distillation]
+    - [deep learning, review, knowledge distillation]
 author_profile: false
 sidebar:
     nav: "docs"

@@ -2,9 +2,9 @@
 layout: single
 title:  "Custom Dataloader for Tensorflow"
 categories: 
-    - deep learning
+    - AI
 tag:
-    - [tensorflow, keras, dataloader, memory]    
+    - [deep learning, tensorflow, keras, dataloader, memory]    
 author_profile: false
 sidebar:
     nav: "docs"

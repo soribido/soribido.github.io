@@ -2,9 +2,9 @@
 layout: single
 title:  "파이토치(PyTorch) CUDA error: no kernel image is available for execution on the device"
 categories: 
-    - Error
+    - AI
 tag:
-    - [PyTorch, CUDA, GPU]    
+    - [error, pytorch, CUDA, GPU]    
 author_profile: false
 sidebar:
     nav: "docs"
