@@ -2,8 +2,6 @@
 title: "etc"
 layout: archive
 permalink: /etc/
-sidebar:
-    nav: "docs"
 sidebar_main: true
 ---
 

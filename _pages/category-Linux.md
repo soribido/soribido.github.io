@@ -2,8 +2,6 @@
 title: "Linux"
 layout: archive
 permalink: /Linux/
-sidebar:
-    nav: "docks"
 sidebar_main: true    
 ---
 

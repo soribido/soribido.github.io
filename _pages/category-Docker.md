@@ -2,8 +2,6 @@
 title: "Docker"
 layout: archive
 permalink: /Docker/
-sidebar:
-    nav: "docs"
 sidebar_main: true    
 ---
 
