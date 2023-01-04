@@ -1,7 +1,5 @@
 # main links
 main:
-  - title: "Home"
-    url: /index.html
   - title: "Category"
     url: /categories/
   - title: "Tag"
@@ -14,22 +12,6 @@ main:
 docs:
   - title: "카테고리"       
     children:
-      # -title: "AI"
-      #  url: "/AI/"
-      #  category: "AI"
-      # -title: "blog"
-      #  url: "/blog/"
-      #  category: "blog"
-      # -title: "Linux"
-      #  url: "/Linux/"
-      #  category: "Linux"
-      # -title: "Docker"
-      #  url: "/Docker/"
-      #  category: "Docker"
-      # -title: "etc"
-      #  url: "/etc/"
-      #  category: "etc"
-
       - title: "Category"
         url: /categories/  
       - title: "Tag"
