@@ -12,23 +12,26 @@ main:
 docs:
   - title: "카테고리"       
     children:
-      # -title: "AI"
-      #  url: "/AI/"
-      # -title: "blog"
-      #  url: "/blog/"
-      #  category: "blog"
-      # -title: "Linux"
-      #  url: "/Linux/"
-      #  category: "Linux"
-      # -title: "Docker"
-      #  url: "/Docker/"
-      # -title: "etc"
-      #  url: "/etc/"
+      -title: "AI"
+       url: "/AI/"
+       category: "AI"
+      -title: "blog"
+       url: "/blog/"
+       category: "blog"
+      -title: "Linux"
+       url: "/Linux/"
+       category: "Linux"
+      -title: "Docker"
+       url: "/Docker/"
+       category: "Docker"
+      -title: "etc"
+       url: "/etc/"
+       category: "etc"
 
-      - title: "Category"
-        url: /categories/  
-      - title: "Tag"
-        url: /tags/
+      # - title: "Category"
+      #   url: /categories/  
+      # - title: "Tag"
+      #   url: /tags/
   # - title: "Quick-Start Guide"
   #   url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   # - title: "About"
