@@ -35,7 +35,8 @@ Vision Transformer(ViT)는 [An Image is Worth 16x16 Words: Transformers for Imag
 
 # Import and image
 이제 본격적으로 코드와 함께 ViT가 어떻게 구성되어있는지 보려고 한다.  
-![vit](/assets/images/post-vit/vit.gif)
+<img src="./assets/images/post-vit/vit.gif" width="500px"></img>
+  
 총체적으로 보면 입력 이미지가 패치로 나누어지고 flatten되어 transformer 인코더에 들어가고 multi-head attention을 거쳐 MLP와 결합하여 목적에 맞게 class를 예측한다.(분류 예시)  
 https://github.com/FrancescoSaverioZuppichini/ViT 에 pytorch와 기타 라이브러리를 이용하여 ViT를 구현하였고 이 코드를 분석해보고자 한다.  
 https://github.com/lucidrains/vit-pytorch/blob/main/vit_pytorch/vit.py 에는 ViT에 관련한 여러 논문을 코드로 구현해 놓았다.  
@@ -55,7 +56,8 @@ from einops.layers.torch import Rearrange, Reduce
 from torchsummary import summary
 ```
 
-먼저 필요한 라이브러리들을 가져온다. 특이점은 einops인데 einstein operation의 약자로 tensor의 shape관련 작업을 수행할 때 굉장히 유용하다.  
+먼저 필요한 라이브러리들을 가져온다.  
+특이점은 einops인데 einstein operation의 약자로 tensor의 shape관련 작업을 수행할 때 굉장히 유용하다.  
 
 ```python
 x = torch.randn(8, 3, 224, 224)
@@ -91,5 +93,10 @@ PatchEmbedding()(x).shape
 torch.Size([8, 196, 768])
 ```
 
-이미지를 패치로 잘라 임베딩하는 과정이다. einops의 rearrange를 사용하여 $B\times C\times H\times W$ 의 이미지를 $B\times N\times (P^{2}\cdot C)$ 로 바꿔준다. P는 패치의 크기이고 N은 $HW/P^{2}$ 이다. 예시에서는 $8\times 3\times (14\cdot 16)\times (14\cdot 16)$ 이 $8\times (14\cdot 14)\times (14\cdot 16\cdot 3)$ 으로 변한 것이다. 이미지를 패치로 나누고 flatten하는 이러한 과정을 patch embeddings라고 정의하고 있다. 코드에서도 나와 있듯이 linear 대신에 컨볼루션 layer를 사용하는데 이렇게 하면 성능 향상이 있다고 한다. 결과적으로 보면 16x16인 이미지를 단어 하나로 생각하고 이미지는 rgb이기 때문에 3을 곱한 768이 단어 하나가 되고, 이 단어가 196개가 있는 것이다.  
+이미지를 패치로 잘라 임베딩하는 과정이다.  
+einops의 rearrange를 사용하여 $B\times C\times H\times W$ 의 이미지를 $B\times N\times (P^{2}\cdot C)$ 로 바꿔준다.  
+P는 패치의 크기이고 N은 $HW/P^{2}$ 이다. 예시에서는 $8\times 3\times (14\cdot 16)\times (14\cdot 16)$ 이 $8\times (14\cdot 14)\times (14\cdot 16\cdot 3)$ 으로 변한 것이다.  
+이미지를 패치로 나누고 flatten하는 이러한 과정을 patch embeddings라고 정의하고 있다.  
+코드에서도 나와 있듯이 linear 대신에 컨볼루션 layer를 사용하는데 이렇게 하면 성능 향상이 있다고 한다.  
+결과적으로 보면 16x16인 이미지를 단어 하나로 생각하고 이미지는 rgb이기 때문에 3을 곱한 768이 단어 하나가 되고, 이 단어가 196개가 있는 것이다.  
 
