@@ -35,7 +35,7 @@ Vision Transformer(ViT)는 [An Image is Worth 16x16 Words: Transformers for Imag
 
 # Import and image
 이제 본격적으로 코드와 함께 ViT가 어떻게 구성되어있는지 보려고 한다.  
-<img src="./assets/images/post-vit/vit.gif" width="500px"></img>
+![vit](/assets/images/post-vit/vit.gif)
   
 총체적으로 보면 입력 이미지가 패치로 나누어지고 flatten되어 transformer 인코더에 들어가고 multi-head attention을 거쳐 MLP와 결합하여 목적에 맞게 class를 예측한다.(분류 예시)  
 https://github.com/FrancescoSaverioZuppichini/ViT 에 pytorch와 기타 라이브러리를 이용하여 ViT를 구현하였고 이 코드를 분석해보고자 한다.  
