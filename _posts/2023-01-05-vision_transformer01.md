@@ -24,8 +24,8 @@ Vision Transformer(ViT)는 [An Image is Worth 16x16 Words: Transformers for Imag
 먼저 트랜스포머는 자연어 처리 분야에서 RNN, LSTM등의 문제점을 해결하기 위해 나온 구조이다.  
 트랜스포머는 제목인 Attention is all you need에서도 나타나듯이 attention이라는 컨셉을 사용하는데, 쉽게 이야기하자면 전체를 같은 비율로 참조하는게 아니라 유사성을 측정하여 예측과 관련된 부분을 더 주의 깊게 보는 것이다.
   
-트랜스포머는 인코더-디코더 구조로 구성되어 있다.(예를 들어 번역의 경우 문장이 들어가서 문장이 나온다.)
-비전 트랜스포머는 기본적으로 분류 문제를 예시로 들고 오는데, 이 경우 클래스를 예측만 하면 되기 때문에 인코더에서 처리 후 다시 디코더를 통해 무언가로 돌려주는 과정이 필요없으므로 인코더만 존재한다.  
+트랜스포머는 일반적으로 인코더-디코더 구조로 구성되어 있다.(예를 들어 번역의 경우 문장이 들어가서 문장이 나온다)
+비전 트랜스포머는 기본적으로 분류 문제를 예시로 들고 오는데, 이 경우 클래스를 예측만 하면 되기 때문에 인코더에서 처리 후 다시 디코더를 통해 무언가로 돌려주는 과정이 필요없으므로 인코더만 존재한다.(인코더만 이용한다는 점에서는 BERT와 유사하다)  
 
 # Batch Normalization(BN) vs Layer normalization(LN)
 아래의 그림을 통해 BN과 LN의 차이점을 볼 수 있는데, BN은 각 샘플들의 feature를 정규화하고, LN은 각 샘플들을 정규화한다.  
@@ -38,8 +38,8 @@ Vision Transformer(ViT)는 [An Image is Worth 16x16 Words: Transformers for Imag
 ![vit](/assets/images/post-vit/vit.gif)
   
 총체적으로 보면 입력 이미지가 패치로 나누어지고 flatten되어 transformer 인코더에 들어가고 multi-head attention을 거쳐 MLP와 결합하여 목적에 맞게 class를 예측한다.(분류 예시)  
-https://github.com/FrancescoSaverioZuppichini/ViT 에 pytorch와 기타 라이브러리를 이용하여 ViT를 구현하였고 이 코드를 분석해보고자 한다.  
-https://github.com/lucidrains/vit-pytorch/blob/main/vit_pytorch/vit.py 에는 ViT에 관련한 여러 논문을 코드로 구현해 놓았다.  
+[https://github.com/FrancescoSaverioZuppichini/ViT](https://github.com/FrancescoSaverioZuppichini/ViT) 에 pytorch와 기타 라이브러리를 이용하여 ViT를 구현하였고 이 코드를 분석해보고자 한다.  
+[https://github.com/lucidrains/vit-pytorch/](https://github.com/lucidrains/vit-pytorch/) 에는 ViT에 관련한 여러 논문을 코드로 구현해 놓았다.  
 이해를 위하여 코드에 추가적으로 주석을 표시하였다.  
 
 ```python
@@ -100,3 +100,34 @@ P는 패치의 크기이고 N은 $HW/P^{2}$ 이다. 예시에서는 $8\times 3\t
 코드에서도 나와 있듯이 linear 대신에 컨볼루션 layer를 사용하는데 이렇게 하면 성능 향상이 있다고 한다.  
 결과적으로 보면 16x16인 이미지를 단어 하나로 생각하고 이미지는 rgb이기 때문에 3을 곱한 768이 단어 하나가 되고, 이 단어가 196개가 있는 것이다.  
 
+# Class token & Position embedding
+```python
+class PatchEmbedding(nn.Module):
+    def __init__(self, in_channels: int = 3, patch_size: int = 16, emb_size: int = 768, img_size: int = 224):
+        self.patch_size = patch_size
+        super().__init__()
+        self.projection = nn.Sequential(
+            # using a conv layer instead of a linear one -> performance gains
+            nn.Conv2d(in_channels, emb_size, kernel_size=patch_size, stride=patch_size),
+            Rearrange('b e (h) (w) -> b (h w) e'), #[8,196,768]
+        )
+        self.cls_token = nn.Parameter(torch.randn(1,1, emb_size)) #class token [1,1,768]
+        self.positions = nn.Parameter(torch.randn((img_size // patch_size) **2 + 1, emb_size)) #[197,768]
+        
+    def forward(self, x: Tensor) -> Tensor:
+        b, _, _, _ = x.shape
+        x = self.projection(x)
+        cls_tokens = repeat(self.cls_token, '() n e -> b n e', b=b) #class token 반복(batch size)
+        # prepend the cls token to the input
+        x = torch.cat([cls_tokens, x], dim=1) #class token+x
+        # add position embedding
+        x += self.positions 
+
+        return x
+```
+ViT에는 BERT와 유사하게 class token을 사용한다.  
+맨 앞에 학습가능한 class token을 추가하는데 BERT에서 이는 다른 단어와 구분되는 문장의 representation의 의미이고 ViT에서도 이러한 컨셉을 사용했다고 이해하였다.  
+Position embedding은 위치정보를 모델에 표현하기 위한 것인데, class token으로 인해 늘어난 shape에 맞추어 생성한다.  
+패치로 이미지를 잘랐기 때문에(혹은 문장에서 단어 단위로 구성되든) 직관적으로 이들의 위치 정보는 중요하다고 생각할 수 있다.  
+차이점으로는 ViT에서는 랜덤하게 초기화하여 사용하는데 원래 transformer에서는 sin/cos 함수로 사용한다.  
+이후의 multi-head attention부터 이어지는 부분은 다음 포스팅에서 설명하고자 한다.
