@@ -12,9 +12,7 @@ sidebar:
 
 # Encoder
 저번 포스팅의 position embedding에 이어 본격적인 ViT의 인코더 부분을 설명하고자 한다.  
-<p align="center">
-    <img src="/assets/images/post-vit/encoder.png", width="50%",height="50%">
-</p>
+![enc](/assets/images/post-vit/encoder.png)
 
 그림의 Norm은 layer normalization이고 입력이 그대로 더해지는 residual 구조를 가지고 있다.  
 Multi-Head Attention 라는 부분이 있는데 이를 알아보자.  
