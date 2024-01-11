@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Ubuntu CVAT(Computer Vision Annotation Tool) 설치 가이드"
+title:  "CVAT(Computer Vision Annotation Tool) 설치 가이드 for Ubuntu"
 categories: 
     - etc
 tag:
