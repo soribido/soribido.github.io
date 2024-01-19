@@ -128,7 +128,7 @@ ___
 prompts = [construct_input_prompt("Among the two images, one has a defect. Where is the scratch when the image is divided into 2x2 parts?")]
 ``` 
 
-<center><img src='{{"/assets/images/post-honeybee/result02.PNG" | relative_url}}' width="90%"></center>
+<center><img src='{{"/assets/images/post-honeybee/result03.PNG" | relative_url}}' width="90%"></center>
 <br>
 두 개의 이미지를 넣을 수도 있다. 하지만 질문에 제대로 대답하지 못하였다.  
 
@@ -137,7 +137,7 @@ ___
 prompts = [construct_input_prompt("Explain this image.")]
 ``` 
 
-<center><img src='{{"/assets/images/post-honeybee/result02.PNG" | relative_url}}' width="90%"></center>
+<center><img src='{{"/assets/images/post-honeybee/result04.PNG" | relative_url}}' width="90%"></center>
 <br>
 제공한 이미지가 곰인 것도 식별한다.  
 
