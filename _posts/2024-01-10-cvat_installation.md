@@ -133,18 +133,20 @@ docker compose down
 
 docker ps를 입력하면 아까와 달리 여러 개의 컨테이너가 보이지 않을 것이다.
 </br>
+  
 
 여기에서 아래의 명령어를 실행한다. 경로에 유의하자.
 ```bash
 docker compose -f docker-compose.yml -f components/serverless/docker-compose.serverless.yml up -d
 ```
-</br>
+  
 
 이제 만약 컨테이너의 작동을 멈추고 싶다면 아래의 명령어를 실행한다.
 ```
 docker compose -f docker-compose.yml -f components/serverless/docker-compose.serverless.yml down
 ```
-</br>
+  
+  
 
 딥러닝 모델 deploy를 도와줄 nuclio가 필요하다. 아래의 version은 docker-compose.serverless.yml 파일을 열어서 확인하도록 하자.
 
