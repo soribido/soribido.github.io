@@ -2,7 +2,7 @@
 layout: single
 title:  "Honeybee (Kakao MLLM) Inference 테스트"
 categories: 
-    - AI
+    - DL
 tag:
     - [LLM, multimodal, MLLM, honeybee]    
 author_profile: false

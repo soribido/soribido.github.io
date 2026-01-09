@@ -2,7 +2,7 @@
 layout: single
 title:  "Vision Transformer (1)"
 categories: 
-    - AI
+    - DL
 tag:
     - [deep learning, review, vision transformer, computer vision]
 author_profile: false

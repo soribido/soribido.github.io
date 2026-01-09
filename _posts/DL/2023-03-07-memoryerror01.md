@@ -2,7 +2,7 @@
 layout: single
 title:  "Docker memory error"
 categories: 
-    - AI
+    - DL
 tag:
     - [error, memory, CUDA, GPU]    
 author_profile: false
