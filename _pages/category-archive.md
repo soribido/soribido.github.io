@@ -1,7 +1,6 @@
 ---
-title: "Category"
-layout: categories
-permalink: /categories/
+title: "전체 게시물"
+layout: posts
+permalink: /posts/
 author_profile: true
-sidebar_main: true
 ---
