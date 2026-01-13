@@ -45,6 +45,9 @@
         </span>
       </li>
       <li>
+        <span class="nav__sub-title"><a href="/categories/ComputerVision/">👁️ Computer Vision ({{ site.categories['ComputerVision'].size }})</a></span>
+      </li>
+      <li>
         <span class="nav__sub-title"><a href="/categories/Docker/">🐳 Docker ({{ site.categories['Docker'].size }})</a></span>
       </li>
       <li>
@@ -55,7 +58,7 @@
       </li>
       <li>
         <span class="nav__sub-title"><a href="/categories/etc/">📁 etc ({{ site.categories['etc'].size }})</a></span>
-      </li>
+      </li>  
     </ul>
   </nav>
 {% endif %}
