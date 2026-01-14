@@ -57,8 +57,11 @@
         <span class="nav__sub-title"><a href="/categories/Python/">💻 Python ({{ site.categories['Python'].size }})</a></span>
       </li>
       <li>
+        <span class="nav__sub-title"><a href="/categories/RL/">🎮 RL ({{ site.categories['RL'].size }})</a></span>
+      </li>
+      <li>
         <span class="nav__sub-title"><a href="/categories/etc/">📁 etc ({{ site.categories['etc'].size }})</a></span>
-      </li>  
+      </li>
     </ul>
   </nav>
 {% endif %}
