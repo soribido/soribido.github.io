@@ -60,6 +60,9 @@
         <span class="nav__sub-title"><a href="/categories/RL/">🎮 RL ({{ site.categories['RL'].size }})</a></span>
       </li>
       <li>
+        <span class="nav__sub-title"><a href="/categories/Robot/">🤖 Robot ({{ site.categories['Robot'].size }})</a></span>
+      </li>
+      <li>
         <span class="nav__sub-title"><a href="/categories/etc/">📁 etc ({{ site.categories['etc'].size }})</a></span>
       </li>
     </ul>
