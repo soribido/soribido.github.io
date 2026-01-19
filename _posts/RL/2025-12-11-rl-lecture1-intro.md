@@ -122,9 +122,9 @@ $$S_t^{a} = \sigma \left( S_{t-1}^{a} W_s + O_t W_o \right)$$
 	* 상태를 통해 정책을 만들고 이것이 가장 큰 보상으로 이어지게 하고 싶다
 	* Stochastic policy: $\pi(a\mid s) = \mathbb{P}[A=a\mid S=s]$
 	* 상태 공간을 더 많이 탐색하기 위해 무작위적인 탐색적 결정을 내릴수도 있음
-* **Valude function**: state나 action이 얼마나 좋은지 평가하는 함수. 가치함수.
+* **Value function**: state나 action이 얼마나 좋은지 평가하는 함수. 가치함수.
 	* prediction of future reward
-	* $v_{\pi}(s) = \mathbb{E}_{\pi} \left[ R_{t+1} + \gamma R_{t+2} + \gamma^{2} R_{t+3} + \cdots \,\middle|\, S_t = s \right]$
+	* $v_{\pi}(s) = \mathbb{E}_{\pi} \left[ R_{t+1} + \gamma R_{t+2} + \gamma^{2} R_{t+3} + \cdots \mid S_t = s \right]$
 	* 행동 방식에 따라 달라지므로 $\pi$로 인덱싱해야 한다.
 	* 현재에 더 가중치를 주는 방식으로 $\gamma$(감가율;discount)를 적용할 수 있다.
 	* ex. 로봇 일어서서 가기, 자동차 궤적 따라가기
