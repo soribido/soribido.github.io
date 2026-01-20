@@ -157,4 +157,5 @@ class APF:
 <br>
 
 ### Reference
+* Khatib, Oussama. "Real-time obstacle avoidance for manipulators and mobile robots." The international journal of robotics research 5.1 (1986): 90-98.
 * Fedele, Giuseppe, et al. "Obstacles avoidance based on switching potential functions." _Journal of Intelligent & Robotic Systems_ 90.3 (2018): 387-405.
