@@ -150,11 +150,12 @@ class APF:
 또한 실제 상황에서는 로봇의 최대 속도가 정해져 있기 때문에 이를 고려하여 이동하고 상태를 업데이트해 줄 필요가 있다.
 단점으로는 APF는 장애물이 밀어내는 힘과 목표 지점이 끌어당기는 힘이 평형을 이룰 경우 local minima에 빠질 수 있다. 이를 방지하기 위해 tangential force (장애물을 원형으로 돌아가는 힘)을 적용해 볼 수 있다.
 
-
+시뮬레이션 코드는 [https://github.com/soribido/Geometry-Aware-Robotics/blob/main/obstacle_avoidance/APF_improved.py](https://github.com/soribido/Geometry-Aware-Robotics/blob/main/obstacle_avoidance/APF_improved.py)에서 확인할 수 있으며  
 결과적으로는 아래와 같은 시뮬레이션 결과물을 얻을 수 있다.
 
 <center><img src='{{"/assets/images/post-apf/apf_simulation.gif" | relative_url}}' width="80%"></center>
 <br>
 
 ### Reference
+* Khatib, Oussama. "Real-time obstacle avoidance for manipulators and mobile robots." The international journal of robotics research 5.1 (1986): 90-98.
 * Fedele, Giuseppe, et al. "Obstacles avoidance based on switching potential functions." _Journal of Intelligent & Robotic Systems_ 90.3 (2018): 387-405.
